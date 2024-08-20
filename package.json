@@ -1,5 +1,7 @@
 {
   "devDependencies": {
+    "browserify": "^17.0.0",
+    "coffeeify": "^3.0.1",
     "coffeescript": "^2.7.0",
     "minify": "^11.4.0"
   }
