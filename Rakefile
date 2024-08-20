@@ -23,7 +23,8 @@ def bundle files
 end
 
 def convert
-  coffee '-o build -c ts.coffee'
+  system 'mkdir -p ./build'
+  npm("browserify -t coffeeify ts.coffee -o build/ts.js")
 end
 
 task :default => :minify
