@@ -318,8 +318,8 @@ class Timeseries
 #
 ###
 class NumericTimeseries extends Timeseries
-  constructor: (@data) ->
-    super(@data)
+  constructor: (data) ->
+    super(data)
 
   statistics: () ->
     return @_stats if @_stats
@@ -548,8 +548,8 @@ tree.series("dan") -> MultiTimeseries
 ###
 class MultiTimeseries extends Timeseries
 
-  constructor: (@data) ->
-    super(@data)
+  constructor: (data) ->
+    super(data)
     # At this point we should have a time series
     # with standard object values (key, value).
     # Take those values and split them into singular ts
