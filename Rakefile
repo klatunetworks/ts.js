@@ -24,7 +24,7 @@ end
 
 def convert
   system 'mkdir -p ./build'
-  npm("browserify -t coffeeify ts.coffee -o build/ts.js")
+  npm("browserify -t [ coffeeify --header ] ts.coffee -o build/ts.js")
 end
 
 task :default => :minify
