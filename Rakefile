@@ -1,3 +1,10 @@
+def npm command, **opts
+  system("npm exec -- #{command}", **{ exception: true }.merge(opts))
+end
+
+def coffee subcommand, **opts
+  npm("coffee #{subcommand}", **opts)
+end
 
 
 def file_list
@@ -13,13 +20,13 @@ def bundle files
 end
 
 def convert
-  system "coffee -o build -c ts.coffee"
+  coffee '-o build -c ts.coffee'
 end
 
 task :default => :minify
 
 task :test do
-  system "coffee tests/runner.coffee"
+  coffee "tests/runner.coffee"
 end
 
 task :minify => :build do
@@ -34,7 +41,7 @@ task :build do
 end
 
 task :cbuild do
-  system "coffee -w -c ts.coffee"
+  coffee "-w -c ts.coffee"
 end
 
 desc "Watch files and run the spec, coffee --watch on many + run"
@@ -49,7 +56,7 @@ task :autotest => [:test] do
       if Time.now - $last > 1
         $last = Time.now
         convert
-        system "coffee tests/runner.coffee"
+        coffee "tests/runner.coffee"
       end
     end
   end
