@@ -6,6 +6,9 @@ def coffee subcommand, **opts
   npm("coffee #{subcommand}", **opts)
 end
 
+def minify subcommand, **opts
+  npm("minify #{subcommand}", **opts)
+end
 
 def file_list
   parts = [
@@ -30,14 +33,15 @@ task :test do
 end
 
 task :minify => :build do
-  require "yuicompressor" 
-  File.open("build/ts.min.js", "w") do |f|
-    f << YUICompressor.compress_js(File.open("build/ts.js").read, :munge => true)
-  end
+  minify("build/ts.js > build/ts.min.js")
 end
 
-task :build do
+task :build => :clean do
   convert
+end
+
+task :clean do
+  system 'rm -dr ./build'
 end
 
 task :cbuild do
@@ -48,7 +52,7 @@ desc "Watch files and run the spec, coffee --watch on many + run"
 task :autotest => [:test] do
 
   require "eventmachine"
-  
+
   $last = Time.now
 
   module Handler
