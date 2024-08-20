@@ -628,11 +628,4 @@ class MultiTimeseries extends Timeseries
   exists: (name) ->
     @series(name) != null
 
-
-# expose the factory
-root = if typeof module != "undefined" && module.exports
-  module.exports
-else
-  window
-
-root.$ts = factory
+module.exports = factory
