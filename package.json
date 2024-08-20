@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "coffeescript": "^2.7.0",
+    "minify": "^11.4.0"
+  }
+}
