@@ -1,7 +1,10 @@
 {
   "scripts": {
-    "build": "scripts/clean && scripts/build",
     "clean": "scripts/clean",
+
+    "prebuild": "npm run clean",
+    "build": "scripts/build",
+
     "test": "coffee scripts/test.coffee",
     "autotest": "nodemon --watch tests/ --watch ts.coffee -- scripts/test.coffee"
   },

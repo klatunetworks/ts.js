@@ -1,3 +1,5 @@
 #!/bin/sh
 
-rm -dr ./build
+[ -d ./build ] && rm -dr ./build
+
+exit 0
