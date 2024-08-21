@@ -87,8 +87,4 @@ class Runner
     else
       console.log("#{@green('☑')} #{@tests} passes, 0 failures")
 
-global.runner = new Runner(true)
-
-require "./ts_test"
-
-global.runner.report()
+module.exports = Runner

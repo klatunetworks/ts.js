@@ -1,8 +1,15 @@
 {
+  "scripts": {
+    "build": "scripts/clean && scripts/build",
+    "clean": "scripts/clean",
+    "test": "coffee scripts/test.coffee",
+    "autotest": "nodemon --watch tests/ --watch ts.coffee -- scripts/test.coffee"
+  },
   "devDependencies": {
-    "browserify": "^17.0.0",
-    "coffeeify": "^3.0.1",
     "coffeescript": "^2.7.0",
-    "minify": "^11.4.0"
+    "esbuild": "^0.23.1",
+    "esbuild-coffeescript": "^2.2.0",
+    "minify": "^11.4.0",
+    "nodemon": "^3.1.4"
   }
 }

@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+const esbuild = require('esbuild');
+const coffeeScriptPlugin = require('esbuild-coffeescript');
+
+const buildOptions = {
+  entryPoints: ['ts.coffee'],
+  bundle: true,
+  outfile: 'build/ts.js',
+  format: 'iife',
+  globalName: '$ts',  
+  sourcemap: true,
+  plugins: [coffeeScriptPlugin()],
+  platform: 'browser'
+};
+const minBuildOptions = {
+  ...buildOptions,
+  ...{
+    minify: true,
+    outfile: 'build/ts.min.js',
+    sourcemap: false
+  }
+};
+
+esbuild.build(buildOptions);
+esbuild.build(minBuildOptions)
