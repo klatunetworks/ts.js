@@ -9,7 +9,6 @@
     "coffeescript": "^2.7.0",
     "esbuild": "^0.23.1",
     "esbuild-coffeescript": "^2.2.0",
-    "minify": "^11.4.0",
     "nodemon": "^3.1.4"
   }
 }
