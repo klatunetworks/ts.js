@@ -121,7 +121,7 @@ var ts = $ts.numeric(
 
 #### Contributing
 
-fork -> modify -> rake test -> request pull
+fork -> modify -> npm test -> request pull
 
 #### Contributors
 * Dan Simpson
