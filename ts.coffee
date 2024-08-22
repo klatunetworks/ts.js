@@ -619,4 +619,4 @@ class MultiTimeseries extends Timeseries
   exists: (name) ->
     @series(name) != null
 
-module.exports = factory
+export default factory

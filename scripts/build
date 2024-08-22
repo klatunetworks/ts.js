@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const esbuild = require('esbuild');
-const coffeeScriptPlugin = require('esbuild-coffeescript');
+import esbuild from 'esbuild';
+import coffeeScriptPlugin from 'esbuild-coffeescript';
 
-const fs = require('fs');
+import fs from 'fs';
 const pkg = JSON.parse(fs.readFileSync(process.env.npm_package_json, 'utf8'));
 
 const NAME = pkg.name;
@@ -15,10 +15,9 @@ const VERSION = pkg.version;
 const buildOptions = {
   entryPoints: ['ts.coffee'],
   bundle: true,
-  format: 'iife',
-  globalName: '$ts',  
   plugins: [coffeeScriptPlugin()],
   platform: 'browser',
+  target: ["es6"],
   banner: {
     js: `// ${NAME} - version ${VERSION}\n` +
         `//\n` +
@@ -28,5 +27,6 @@ const buildOptions = {
   }
 };
 
-esbuild.build({ ...buildOptions, ...{ outfile: 'build/ts.js', sourcemap: true } });
-esbuild.build({ ...buildOptions, ...{ outfile: 'build/ts.min.js', minify: true } });
+esbuild.build({ ...buildOptions, ...{ format: 'esm', outfile: 'build/ts.mjs' } });
+esbuild.build({ ...buildOptions, ...{ format: 'iife', globalName: '$ts', outfile: 'build/ts.js', sourcemap: true } });
+esbuild.build({ ...buildOptions, ...{ format: 'iife', globalName: '$ts', outfile: 'build/ts.min.js', minify: true } });
