@@ -1,3 +1,8 @@
+// ts.js - version 0.9.2
+//
+// Copyright 2012 Dan Simpson, Mike Countis
+//
+// MIT License
 var $ts = (() => {
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __commonJS = (cb, mod) => function __require() {

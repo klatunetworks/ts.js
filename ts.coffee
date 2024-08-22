@@ -1,12 +1,3 @@
-###
-ts.js - version 0.9.2
-
-Copyright 2012 Dan Simpson, Mike Countis
-
-MIT License: http://opensource.org/licenses/MIT
-###
-
-
 class TimeseriesFactory
 
   constructor: () ->

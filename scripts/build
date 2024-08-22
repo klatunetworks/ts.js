@@ -3,24 +3,30 @@
 const esbuild = require('esbuild');
 const coffeeScriptPlugin = require('esbuild-coffeescript');
 
+const fs = require('fs');
+const pkg = JSON.parse(fs.readFileSync(process.env.npm_package_json, 'utf8'));
+
+const NAME = pkg.name;
+const AUTHOR = pkg.author;
+const CONTRIBUTORS = pkg.contributors;
+const LICENSE = pkg.license;
+const VERSION = pkg.version;
+
 const buildOptions = {
   entryPoints: ['ts.coffee'],
   bundle: true,
-  outfile: 'build/ts.js',
   format: 'iife',
   globalName: '$ts',  
-  sourcemap: true,
   plugins: [coffeeScriptPlugin()],
-  platform: 'browser'
-};
-const minBuildOptions = {
-  ...buildOptions,
-  ...{
-    minify: true,
-    outfile: 'build/ts.min.js',
-    sourcemap: false
+  platform: 'browser',
+  banner: {
+    js: `// ${NAME} - version ${VERSION}\n` +
+        `//\n` +
+        `// Copyright 2012 ${CONTRIBUTORS.join(', ')}\n` +
+        `//\n` +
+        `// ${LICENSE} License`
   }
 };
 
-esbuild.build(buildOptions);
-esbuild.build(minBuildOptions)
+esbuild.build({ ...buildOptions, ...{ outfile: 'build/ts.js', sourcemap: true } });
+esbuild.build({ ...buildOptions, ...{ outfile: 'build/ts.min.js', minify: true } });

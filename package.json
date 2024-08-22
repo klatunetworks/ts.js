@@ -1,4 +1,12 @@
 {
+  "name": "ts.js",
+  "license": "MIT",
+  "version": "0.9.2",
+  "author": "Dan Simpson",
+  "contributors": [
+    "Dan Simpson",
+    "Mike Countis"
+  ],
   "scripts": {
     "clean": "scripts/clean",
 
