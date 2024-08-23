@@ -25,12 +25,14 @@ var $ts = (() => {
   // ts.coffee
   var ts_exports = {};
   __export(ts_exports, {
-    default: () => ts_default
+    VERSION: () => VERSION,
+    default: () => factory
   });
   var MultiTimeseries;
   var NumericTimeseries;
   var Timeseries;
   var TimeseriesFactory;
+  var VERSION;
   var factory;
   TimeseriesFactory = class TimeseriesFactory2 {
     constructor() {
@@ -726,7 +728,7 @@ variance: ${this.variance()}`;
       return this.series(name) !== null;
     }
   };
-  var ts_default = factory;
+  VERSION = "0.9.2";
   return __toCommonJS(ts_exports);
 })();
 //# sourceMappingURL=ts.js.map

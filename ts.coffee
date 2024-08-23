@@ -619,4 +619,6 @@ class MultiTimeseries extends Timeseries
   exists: (name) ->
     @series(name) != null
 
-export default factory
+VERSION = root.__TS_VERSION__
+
+export { factory as default, VERSION }

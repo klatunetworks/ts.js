@@ -3,13 +3,7 @@
 // Copyright 2012 Dan Simpson, Mike Countis
 //
 // MIT License
-
-// ts.coffee
-var MultiTimeseries;
-var NumericTimeseries;
-var Timeseries;
-var TimeseriesFactory;
-var factory;
+var MultiTimeseries, NumericTimeseries, Timeseries, TimeseriesFactory, VERSION, factory;
 TimeseriesFactory = class TimeseriesFactory2 {
   constructor() {
   }
@@ -704,7 +698,8 @@ MultiTimeseries = class MultiTimeseries2 extends Timeseries {
     return this.series(name) !== null;
   }
 };
-var ts_default = factory;
+VERSION = "0.9.2";
 export {
-  ts_default as default
+  VERSION,
+  factory as default
 };

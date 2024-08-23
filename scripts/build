@@ -14,10 +14,10 @@ const VERSION = pkg.version;
 
 const buildOptions = {
   entryPoints: ['ts.coffee'],
-  bundle: true,
   plugins: [coffeeScriptPlugin()],
   platform: 'browser',
   target: ["es6"],
+  define: { "root.__TS_VERSION__": `"${VERSION}"` },
   banner: {
     js: `// ${NAME} - version ${VERSION}\n` +
         `//\n` +
@@ -27,6 +27,6 @@ const buildOptions = {
   }
 };
 
-esbuild.build({ ...buildOptions, ...{ format: 'esm', outfile: 'build/ts.mjs' } });
-esbuild.build({ ...buildOptions, ...{ format: 'iife', globalName: '$ts', outfile: 'build/ts.js', sourcemap: true } });
-esbuild.build({ ...buildOptions, ...{ format: 'iife', globalName: '$ts', outfile: 'build/ts.min.js', minify: true } });
+esbuild.build({ ...buildOptions, ...{ format: 'esm', bundle: false, outfile: 'build/ts.mjs' } });
+esbuild.build({ ...buildOptions, ...{ format: 'iife', bundle: true, globalName: '$ts', outfile: 'build/ts.js', sourcemap: true } });
+esbuild.build({ ...buildOptions, ...{ format: 'iife', bundle: true, globalName: '$ts', outfile: 'build/ts.min.js', minify: true } });
